@@ -49,8 +49,6 @@ export const deleteContact = async (req, res, next) => {
 
 export const createContact = async (req, res, next) => {
   try {
-    validateBody(req.body, createContactSchema);
-
     const newContact = await addContact(req.body);
     res.status(201).json(newContact);
   } catch (error) {
@@ -61,8 +59,10 @@ export const createContact = async (req, res, next) => {
 export const updateContact = async (req, res, next) => {
   try {
     const { id } = req.params;
-    validateBody(req.body, updateContactSchema);
+
     const updatedContact = await editContact(id, req.body);
+    if (!Object.keys(req.body).length)
+      throw HttpError(400, "Body must have at least one field");
     if (!updatedContact) {
       throw HttpError(404, "Not found");
     }
