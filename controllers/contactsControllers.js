@@ -56,8 +56,6 @@ export const updateContact = async (req, res, next) => {
     const { id } = req.params;
 
     const updatedContact = await editContact(id, req.body);
-    if (!Object.keys(req.body).length)
-      throw HttpError(400, "Body must have at least one field");
     if (!updatedContact) {
       throw HttpError(404, "Not found");
     }
