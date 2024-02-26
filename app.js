@@ -27,7 +27,7 @@ app.use((err, req, res, next) => {
 mongoose
   .connect(MONGO_URL)
   .then(
-    app.listen(3000, () => {
+    app.listen(PORT, () => {
       console.log("Database connection successful");
     })
   )

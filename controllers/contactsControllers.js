@@ -1,10 +1,3 @@
-// import {
-//   listContacts,
-//   getContactById,
-//   removeContact,
-//   addContact,
-//   editContact,
-// } from "../services/contactsServices.js";
 import HttpError from "../helpers/HttpError.js";
 import { Contact } from "../models/contact.js";
 export const getAllContacts = async (req, res, next) => {
