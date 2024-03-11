@@ -20,6 +20,15 @@ const usersSchema = new Schema({
     default: null,
   },
   avatarURL: String,
+
+  verify: {
+    type: Boolean,
+    default: false,
+  },
+  verificationToken: {
+    type: String,
+    required: [true, "Verify token is required"],
+  },
 });
 usersSchema.post("save", handleMongooseError);
 export const User = model("user", usersSchema);
